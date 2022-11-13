@@ -26,5 +26,7 @@ int main(void)
 		std::cout << ex.what();
 	}
 
+	getchar();
+
 	return 0;
 }

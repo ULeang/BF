@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <utility>
 #include <cctype>
+
 namespace ULya
 {
 	using std::ifstream;
