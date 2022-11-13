@@ -1,4 +1,8 @@
 #include "BF_interface.h"
+#include <iostream>
+#include <stdexcept>
+
+using ULya::BF_INTERFACE;
 
 int main(void)
 {
@@ -6,7 +10,7 @@ int main(void)
 	try
 	{
 		bf->load_file("code.txt");
-		bf->set_compilation_parameter(_100 | _middle);
+		bf->set_compilation_parameter(ULya::_100 | ULya::_middle);
 		bf->run();
 	}
 	catch (std::invalid_argument& ex)
