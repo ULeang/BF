@@ -15,12 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="BF_interface.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="BF.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BF.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
