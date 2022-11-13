@@ -5,13 +5,13 @@ enum cp
 {
 	_modemask = 0xff
 };
-constexpr static cp _30;
-constexpr static cp _100;
-constexpr static cp _300;
-constexpr static cp _1000;
-constexpr static cp _left;
-constexpr static cp _middle;
-constexpr static cp operator|(cp, cp);
+constexpr static cp _30 = static_cast<cp>(0x01);
+constexpr static cp _100 = static_cast<cp>(0x02);
+constexpr static cp _300 = static_cast<cp>(0x04);
+constexpr static cp _1000 = static_cast<cp>(0x08);
+constexpr static cp _left = static_cast<cp>(0x10);
+constexpr static cp _middle = static_cast<cp>(0x20);
+constexpr cp operator|(cp _1, cp _2);
 
 class BF_INTERFACE
 {

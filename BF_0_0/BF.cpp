@@ -7,16 +7,9 @@
 
 using std::ifstream;
 
-cp _30 = static_cast<cp>(0x01);
-cp _100 = static_cast<cp>(0x02);
-cp _300 = static_cast<cp>(0x04);
-cp _1000 = static_cast<cp>(0x08);
-cp _left = static_cast<cp>(0x10);
-cp _middle = static_cast<cp>(0x20);
-
 constexpr cp operator|(cp _1, cp _2)
 {
-	return static_cast<cp>(_1 | _2);
+	return static_cast<cp>(int(_1) | int(_2));
 }
 
 void BF::set_cap()
@@ -157,9 +150,11 @@ void BF::left_bracket(size_t& p)
 	{
 		auto temp_p = find_rb(p);
 		if (temp_p == string::npos)
-			throw std::logic_error("runtime error:cant match [");
+			throw std::logic_error("runtime error:unclosed [");
 		p = temp_p + 1;
 	}
+	else
+		++p;
 }
 
 void BF::right_bracket(size_t& p)
@@ -169,9 +164,11 @@ void BF::right_bracket(size_t& p)
 	{
 		auto temp_p = find_lb(p);
 		if (temp_p == string::npos)
-			throw std::logic_error("runtime error:cant match ]");
+			throw std::logic_error("runtime error:unclosed ]");
 		p = temp_p + 1;
 	}
+	else
+		++p;
 }
 
 size_t BF::find_rb(size_t p)
@@ -241,6 +238,7 @@ void BF::run()
 		return;
 
 	environment_initialize();
+	check_code();
 
 	for (size_t i = 0; i < code.size(); )
 		switch (code[i])
