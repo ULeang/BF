@@ -1,10 +1,17 @@
 #pragma once
+#include <iostream>
 
 enum cp
 {
-	_30 = 0, _100 = 1, _300 = 2, _1000 = 3,
-	_left = 0, _middle = 4
+	_modemask = 0xff
 };
+constexpr static cp _30;
+constexpr static cp _100;
+constexpr static cp _300;
+constexpr static cp _1000;
+constexpr static cp _left;
+constexpr static cp _middle;
+constexpr static cp operator|(cp, cp);
 
 class BF_INTERFACE
 {
