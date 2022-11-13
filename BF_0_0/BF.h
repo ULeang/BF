@@ -18,7 +18,7 @@ protected:
 	string code;
 
 protected:
-	void set_cap();//根据_mask设置cap
+	void set_mem_size();//根据_mask设置cap
 
 	void check_code();//检查code内容，去除注释，去除空白字符，若包含无效字符抛出异常
 	void remove_comment();

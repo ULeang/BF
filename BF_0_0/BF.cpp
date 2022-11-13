@@ -12,7 +12,7 @@ constexpr cp operator|(cp _1, cp _2)
 	return static_cast<cp>(int(_1) | int(_2));
 }
 
-void BF::set_cap()
+void BF::set_mem_size()
 {
 	switch (0xf & _mask)
 	{
@@ -230,6 +230,7 @@ void BF::load_code(const char* co)
 void BF::set_compilation_parameter(cp c)
 {
 	_mask = c;
+	set_mem_size();
 }
 
 void BF::run()
