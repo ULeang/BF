@@ -9,6 +9,7 @@ BF_0_0.exe code.bf
 默认为-30  
 ### -left -middle  
 分别将初始ptr位置设置为0位、cell数量/2-1位  
+默认为-left  
 ### -i ifilename  
 将标准输入流修改为ifilename文件流  
 ### -o ofilename  
