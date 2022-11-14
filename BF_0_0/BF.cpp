@@ -40,7 +40,7 @@ namespace ULya
 		if (code.size() == 0)
 			return;
 		remove_comment();
-		remove_and_check();
+		remove_white_space();
 	}
 
 	void BF::remove_comment()
@@ -67,15 +67,11 @@ namespace ULya
 		}
 	}
 
-	void BF::remove_and_check()
+	void BF::remove_white_space()
 	{
 		for (int i = code.size() - 1; i > -1; --i)
-		{
 			if (isspace(code[i]))
 				code.erase(i, 1);
-			else if (is_invalid_char(code[i]))
-				throw std::invalid_argument("error:invalid char");
-		}
 	}
 
 	bool BF::is_invalid_char(char c)
@@ -138,12 +134,12 @@ namespace ULya
 
 	void BF::out()
 	{
-		std::cout << mem[mem_ptr];
+		*default_out << mem[mem_ptr];
 	}
 
 	void BF::in()
 	{
-		std::cin >> mem[mem_ptr];
+		*default_in >> mem[mem_ptr];
 	}
 
 	void BF::left_bracket(size_t& p)
@@ -215,6 +211,14 @@ namespace ULya
 		return temp_p;
 	}
 
+	BF::~BF()
+	{
+		if (i_changed)
+			delete default_in;
+		if (o_changed)
+			delete default_out;
+	}
+
 	void BF::load_file(const char* file)
 	{
 		ifstream fin(file, std::ios::in);
@@ -259,10 +263,44 @@ namespace ULya
 			case ',':
 				in(); ++i; break;
 			case '[':
-				left_bracket(i);  break;
+				left_bracket(i); break;
 			case ']':
-				right_bracket(i);  break;
+				right_bracket(i); break;
+			default:
+				throw std::invalid_argument("error:invalid char"); break;
 			}
+	}
+
+	void BF::set_in(const char* file)
+	{
+		auto i = new ifstream(file, std::ios::in);
+		if (!(*i))
+			throw std::invalid_argument("error:cant open input-file");
+		default_in = i;
+		i_changed = true;
+	}
+
+	void BF::unset_in()
+	{
+		delete default_in;
+		default_in = &std::cin;
+		i_changed = false;
+	}
+
+	void BF::set_out(const char* file)
+	{
+		auto o = new std::ofstream(file, std::ios::app);
+		if (!(*o))
+			throw std::invalid_argument("error:cant open output-file");
+		default_out = o;
+		o_changed = false;
+	}
+
+	void BF::unset_out()
+	{
+		delete default_out;
+		default_out = &std::cout;
+		o_changed = false;
 	}
 
 	BF_INTERFACE* BF_INTERFACE::create_BF()

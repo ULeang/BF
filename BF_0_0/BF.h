@@ -3,6 +3,8 @@
 #include "BF_interface.h"
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
 namespace ULya
 {
@@ -18,13 +20,17 @@ namespace ULya
 		vector<char> mem;//内存
 		int mem_ptr;//内存的下标
 		string code;//加载的源代码
+		bool i_changed = false;
+		bool o_changed = false;
+		std::istream* default_in = &std::cin;
+		std::ostream* default_out = &std::cout;
 
 	protected:
 		void set_mem_size();//根据_mask设置cap，若_mask无效抛出异常
 
 		void check_code();//去除注释，去除空白字符，若包含无效字符抛出异常
 		void remove_comment();//去除注释
-		void remove_and_check();//去除空白字符，若包含无效字符抛出异常
+		void remove_white_space();//去除空白字符，若包含无效字符抛出异常
 		bool is_invalid_char(char);//若参数为无效字符返回true
 
 		void load_code(std::istream&);//从流中加载内容到code中
@@ -46,11 +52,15 @@ namespace ULya
 
 	public:
 		BF() :_mask(_30 | _left), mem_ptr(0), mem(30, 0) {}
-		~BF() {}
+		~BF();
 
 		void load_file(const char*);//加载文件内容到code中，若无法打开文件抛出异常
 		void load_code(const char*);//加载字符串内容到code中
 		void set_compilation_parameter(cp);//设置_mask
 		void run();//润
+		void set_in(const char*);
+		void unset_in();
+		void set_out(const char*);
+		void unset_out();
 	};
 }

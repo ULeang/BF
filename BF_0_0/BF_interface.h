@@ -24,5 +24,9 @@ namespace ULya
 		virtual void load_code(const char*) = 0;
 		virtual void set_compilation_parameter(cp) = 0;
 		virtual void run() = 0;
+		virtual void set_in(const char*) = 0;
+		virtual void set_out(const char*) = 0;
+		virtual void unset_in() = 0;
+		virtual void unset_out() = 0;
 	};
 }
