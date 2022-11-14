@@ -1,5 +1,6 @@
 # BF
-练习用简易brainfuck解释器，关于brainfuck，请参见wikipedia-https://en.wikipedia.org/wiki/Brainfuck
+练习用简易brainfuck解释器  
+关于brainfuck，请参见wikipedia-https://en.wikipedia.org/wiki/Brainfuck  
 ## 基础命令
 BF_0_0.exe code.bf  
 从code.bf内以文本模式读入源代码并以标准输出流输出  
