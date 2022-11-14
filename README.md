@@ -4,14 +4,14 @@
 BF_0_0.exe code.bf  
 从code.bf内以文本模式读入源代码并以标准输出流输出  
 ## 命令行参数
--30 -100 -300 -1000  
+### -30 -100 -300 -1000  
 分别将cell数量指定为30、100、300、1000  
 默认为-30  
--left -middle  
+### -left -middle  
 分别将初始ptr位置设置为0位、cell数量/2-1位  
--i ifilename  
+### -i ifilename  
 将标准输入流修改为ifilename文件流  
--o ofile  
+### -o ofile  
 将标准输出流修改为ofilename文件流  
 ## 源代码特性
 支持//样式注释  
