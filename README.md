@@ -11,7 +11,7 @@ BF_0_0.exe code.bf
 分别将初始ptr位置设置为0位、cell数量/2-1位  
 ### -i ifilename  
 将标准输入流修改为ifilename文件流  
-### -o ofile  
+### -o ofilename  
 将标准输出流修改为ofilename文件流  
 ## 源代码特性
 支持//样式注释  
